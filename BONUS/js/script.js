@@ -85,6 +85,9 @@ var app = new Vue(
                 //Imposto la variabile che tiene la posizione della slide con l'indice dell'immagine che ho cliccato
                 this.currentItem = currentIndex;
             },
+            startSlideClock: function(){
+                this.slideClock = setInterval(this.showNextElement, 3000);
+            },
             stopSlideClock: function(){
                 //stoppo lo slider automatico
                 clearInterval(this.slideClock);
@@ -92,7 +95,7 @@ var app = new Vue(
         },
         mounted: function(){
             //inizializzo lo slider automatico, ogni 3 secondi
-            this.slideClock = setInterval(this.showNextElement, 3000);
+            this.startSlideClock();
         }
     }
 );

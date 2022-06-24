@@ -16,7 +16,7 @@
         <div class="container" >
             <div class="slider-wrapper" tabindex="0">
                 <!-- main image -->
-                <div class="item">
+                <div class="item" @mouseenter="stopSlideClock()" @mouseleave="startSlideClock()">
                     <img :src="slides[currentItem].image" :alt="slides[currentItem].title" />
                     <div class="text">
                         <h3>{{ slides[currentItem].title }}</h3>
