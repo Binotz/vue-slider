@@ -65,6 +65,7 @@ var app = new Vue(
         },
         methods:{
             showNextElement: function(){
+                //incremento la variabile che tiene la posizione della slide fino a quando non arriva alla fine, in quel caso la resetto a 0
                 if (this.currentItem >= this.slides.length -1){
                     this.currentItem = 0;
                 } else {
@@ -72,6 +73,7 @@ var app = new Vue(
                 }
             },
             previousNextElement: function(){
+                //come showNextElement, ma al contrario
                 if (this.currentItem <= 0){
                     this.currentItem = this.slides.length - 1;
                 } else {
