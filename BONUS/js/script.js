@@ -35,6 +35,7 @@ var app = new Vue(
         el:'#app',
         data:{
             currentItem: 0,
+            slideClock: null,
             slides:[
                 {
                     image: 'img/01.jpg',
@@ -65,6 +66,7 @@ var app = new Vue(
         },
         methods:{
             showNextElement: function(){
+                //incremento la variabile che tiene la posizione della slide fino a quando non arriva alla fine, in quel caso la resetto a 0
                 if (this.currentItem >= this.slides.length -1){
                     this.currentItem = 0;
                 } else {
@@ -72,6 +74,7 @@ var app = new Vue(
                 }
             },
             previousNextElement: function(){
+                //come showNextElement, ma al contrario
                 if (this.currentItem <= 0){
                     this.currentItem = this.slides.length - 1;
                 } else {
@@ -79,8 +82,17 @@ var app = new Vue(
                 }
             },
             thumbClick: function(currentIndex){
+                //Imposto la variabile che tiene la posizione della slide con l'indice dell'immagine che ho cliccato
                 this.currentItem = currentIndex;
+            },
+            stopSlideClock: function(){
+                //stoppo lo slider automatico
+                clearInterval(this.slideClock);
             }
         },
+        mounted: function(){
+            //inizializzo lo slider automatico, ogni 3 secondi
+            this.slideClock = setInterval(this.showNextElement, 3000);
+        }
     }
 );
